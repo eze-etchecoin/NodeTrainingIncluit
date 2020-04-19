@@ -8,4 +8,11 @@ router.get('/', (req, res) => {
     res.json(result);
 });
 
+router.get('/:id', (req, res) => {
+
+    let id = parseInt(req.params.id);
+    let result = repository.getOne(id);
+    res.json(result);
+});
+
 module.exports = router;

@@ -9,8 +9,10 @@ const contactosRepository = {
     },
 
     getOne: (id) => {
-        
-        let contactos = this.getAll();
+
+        if(!id || id <= 0) return null;
+
+        let contactos = contactosRepository.getAll();
 
         if(!contactos || !contactos.length) return null;
 
