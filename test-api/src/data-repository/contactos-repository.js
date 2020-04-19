@@ -21,7 +21,7 @@ const contactosRepository = {
 
     insert: (persona) => {
         
-        let contactos = this.getAll();
+        let contactos = contactosRepository.getAll();
 
         contactos.push(persona);
 
@@ -30,7 +30,7 @@ const contactosRepository = {
 
     update: (persona) => {
 
-        let contactos = this.getAll();
+        let contactos = contactosRepository.getAll();
         const indexExisting = contactos.indexOf(contactos.find(x => x.Id == persona.Id));
 
         contactos[indexExisting] = persona;
@@ -40,7 +40,7 @@ const contactosRepository = {
 
     delete: (id) => {
         
-        let contactos = this.getAll();
+        let contactos = contactosRepository.getAll();
         indexExisting = contactos.indexOf(contactos.find(x => x.Id == id));
 
         contactos.splice(indexExisting, 1);
