@@ -1,0 +1,23 @@
+[
+	{
+		"Id": 1,
+		"Nombre": "Ezequiel",
+		"Apellido": "Etchecoin",
+		"Email": "eze.etchecoin.92@gmail.com",
+		"Telefono": "3544-614527"
+	},
+	{
+		"Id": 2,
+		"Nombre": "Eugenio",
+		"Apellido": "Serrano",
+		"Email": "eugenioserrano@msn.com",
+		"Telefono": "3544-123123"
+	},
+	{
+		"Id": 3,
+		"Nombre": "Ezequiel",
+		"Apellido": "Fdeil",
+		"Email": "ezequiel.fdeil@incluit.com",
+		"Telefono": "3544-234234"	
+	}
+]
