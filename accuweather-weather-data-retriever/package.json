@@ -1,0 +1,18 @@
+{
+  "name": "accuweather-weather-data-retriever",
+  "version": "1.0.0",
+  "description": "Provides methods for getting weather data using Accuweather API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "weather",
+    "accuweather",
+    "data",
+    "retriever",
+    "api"
+  ],
+  "author": "Ezequiel Etchecoin",
+  "license": "ISC"
+}
