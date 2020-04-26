@@ -1,4 +1,5 @@
-let accuWeatherRetriever = require('accuweather-retriever');
+// let accuWeatherRetriever = require('accuweather-retriever');
+let accuWeatherRetriever = require('../accuweather-retriever/accuweather-retriever');
 const io = require('console-read-write');
 const apiKey = 'TzVuWmyxAeJzUJOuixA7LHnGDooYk4lE';
 
@@ -25,22 +26,21 @@ async function ConsultarClimaConsola() {
     if (locationsResult.length === 1) {
         selectedLocation = locationsResult[0];
     } else {
-
-        while (!selectedLocation) {
-
+        do{
             console.log('Se encontraron estos resultados. Por favor, ingrese el número correspondiente a la localidad buscada.\n');
-            for(let location in locationsResult){
-                let index = 0;
-                console.log(`${index + 1} - ${location.LocalizedName}, ${location.AdministrativeArea.LocalizedName}, ${location.Country.LocalizedName}\n`);
+            let index = 0;
+            for (let location of locationsResult) {
+                console.log(`${index + 1} - ${location.LocalizedName}, ${location.AdministrativeArea.LocalizedName}, ${location.Country.LocalizedName}`);
                 index++;
             }
 
-            let selectedIndex = await io.read();
+            let selectedIndex = parseInt(await io.read()) - 1;
             selectedLocation = locationsResult[selectedIndex];
             if(!selectedLocation){
                 console.log('Opción inválida. Intente nuevamente...');
             }
         }
+        while (!selectedLocation);
     }
 
     // console.log(`El código de locación para Mina Clavero es ${locationKey}`);]
@@ -48,7 +48,7 @@ async function ConsultarClimaConsola() {
 
     let obj = await accuWeatherRetriever.getCurrentWeatherByLocationKey(selectedLocation.Key);
 
-    console.log(`El estado del clima en ${location.LocalizedName} es ${obj.weather}, con una temperatura de ${obj.temperatureInCentigrades} grados.`);
+    console.log(`El estado del clima en ${selectedLocation.LocalizedName} es ${obj.WeatherText}, con una temperatura de ${obj.Temperature.Metric.Value} grados.`);
 }
 
 ConsultarClimaConsola();
