@@ -14,5 +14,8 @@
     "api"
   ],
   "author": "Ezequiel Etchecoin",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
 }

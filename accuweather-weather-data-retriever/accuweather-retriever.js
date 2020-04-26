@@ -1,4 +1,4 @@
-const http = require('http');
+const fetch = require('node-fetch');
 
 //Modify this with ApiKey to use
 const apiKey = 'TzVuWmyxAeJzUJOuixA7LHnGDooYk4lE';
@@ -14,21 +14,21 @@ async function getLocationKeyByLocationName (locationName) {
     //idioma
     url += '&language=es-ES';
 
-    let resp = await http.get(url);
-    let data = await resp.on('data');
+    try{
+        let resp = await fetch(url);
+        let jsonObject = await resp.json();
 
-    let respObject = data;
-    // let respObject = null;
-    //  (resp) => {
-
-    //     let data = '';
-    //     resp.on('data', (chunk) => data += chunk);
-    //     resp.on('end', () => {
-    //         respObject = JSON.parse(data)
-    //     });
-    // }).on('error', (err) => {
-    //     console.log(err)
-    // });
+        if(jsonObject.length > 1){
+            throw "Se encontró más de 1 ubicación. Por favor, sea más específico.";
+        }else if(jsonObject.length === 0){
+            throw "No se encontró ninguna ubicación. Intente con otra búsqueda."
+        }
+    
+        return jsonObject[0].Key;
+    }
+    catch(err) {
+        console.log(err);
+    }
 }
 
 async function getCurrentWeatherByLocationKey (locationKey){

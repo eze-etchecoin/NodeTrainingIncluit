@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\test-api\\src\\index.js"
+            "program": "${workspaceFolder}\\accuweather-weather-data-retriever\\index.js"
         }
     ]
 }
