@@ -1,6 +1,6 @@
 {
   "name": "accuweather-retriever",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "Data retriever for AccuWeather API",
   "main": "index.js",
   "scripts": {

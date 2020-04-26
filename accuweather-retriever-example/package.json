@@ -16,7 +16,7 @@
   "author": "Ezequiel Etchecoin",
   "license": "ISC",
   "dependencies": {
-    "accuweather-retriever": "^1.0.0",
+    "accuweather-retriever": "^1.0.2",
     "console-read-write": "^0.1.1"
   }
 }

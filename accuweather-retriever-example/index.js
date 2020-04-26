@@ -1,5 +1,5 @@
-// let accuWeatherRetriever = require('accuweather-retriever');
-let accuWeatherRetriever = require('../accuweather-retriever/accuweather-retriever');
+let accuWeatherRetriever = require('accuweather-retriever');
+// let accuWeatherRetriever = require('../accuweather-retriever/accuweather-retriever');
 const io = require('console-read-write');
 const apiKey = 'TzVuWmyxAeJzUJOuixA7LHnGDooYk4lE';
 
@@ -30,7 +30,7 @@ async function ConsultarClimaConsola() {
             console.log('Se encontraron estos resultados. Por favor, ingrese el número correspondiente a la localidad buscada.\n');
             let index = 0;
             for (let location of locationsResult) {
-                console.log(`${index + 1} - ${location.LocalizedName}, ${location.AdministrativeArea.LocalizedName}, ${location.Country.LocalizedName}`);
+                console.log(`${index + 1} - ${location.LocalizedName} (${location.AdministrativeArea.LocalizedName}, ${location.Country.LocalizedName})`);
                 index++;
             }
 
@@ -47,8 +47,9 @@ async function ConsultarClimaConsola() {
     /* salida: El código de locación para Mina Clavero es 1228576 */
 
     let obj = await accuWeatherRetriever.getCurrentWeatherByLocationKey(selectedLocation.Key);
+    let locationFullName = `${selectedLocation.LocalizedName} (${selectedLocation.AdministrativeArea.LocalizedName}, ${selectedLocation.Country.LocalizedName})`;
 
-    console.log(`El estado del clima en ${selectedLocation.LocalizedName} es ${obj.WeatherText}, con una temperatura de ${obj.Temperature.Metric.Value} grados.`);
+    console.log(`El estado del clima en ${locationFullName} es ${obj.WeatherText}, con una temperatura de ${obj.Temperature.Metric.Value} grados.`);
 }
 
 ConsultarClimaConsola();
