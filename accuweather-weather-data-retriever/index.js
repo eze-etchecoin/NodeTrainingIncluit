@@ -1,13 +1,17 @@
-const accuWeatherRetriever = require('./accuweather-retriever');
+let accuWeatherRetriever = require('./accuweather-retriever');
 const io = require('console-read-write');
+const apiKey = 'TzVuWmyxAeJzUJOuixA7LHnGDooYk4lE';
 
 async function ConsultarClimaConsola() {
 
     let query;
     do {
         console.log('Ingrese la ciudad de la cual desea consultar el clima actual:');
-        query = await io.read();
+        query = 'nono';
+        // query = await io.read();
     } while(!query || !query.trim());
+
+    accuWeatherRetriever.config.apiKey = 'TzVuWmyxAeJzUJOuixA7LHnGDooYk4lE';
 
     let location = (await accuWeatherRetriever.getLocationsByLocationName(query))[0];
 

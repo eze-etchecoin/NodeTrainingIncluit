@@ -1,14 +1,18 @@
-const fetch = require('node-fetch');
-
-//Modify this with ApiKey to use
-const apiKey = 'TzVuWmyxAeJzUJOuixA7LHnGDooYk4lE';
+const fetch =  require('node-fetch');
 const apiUrl = 'http://dataservice.accuweather.com';
+let config = {
+    apiKey: ''
+}
 
-async function getLocationsByLocationName (locationName) {
-    
+const getLocationsByLocationName = async (locationName) => {
+
+    if(!config.apiKey){
+        throw 'You must specify an ApiKey in "config" property.';
+    }
+
     let url = `${apiUrl}/locations/v1/cities/search`;
     //apiKey
-    url += `?apikey=${apiKey}`;
+    url += `?apikey=${config.apiKey}`;
     //Query
     url += `&q=${locationName}`;
     //idioma
@@ -22,14 +26,18 @@ async function getLocationsByLocationName (locationName) {
     }
     catch(err) {
         console.log(err);
-    }
+    } 
 }
 
-async function getCurrentWeatherByLocationKey (locationKey){
+const getCurrentWeatherByLocationKey = async (locationKey) => {
+
+    if(!config.apiKey){
+        throw 'You must specify an ApiKey in "config" property.';
+    }
 
     let url = `${apiUrl}/currentconditions/v1/${locationKey}`;
     //apiKey
-    url += `?apikey=${apiKey}`;
+    url += `?apikey=${config.apiKey}`;
     //idioma
     url += '&language=es-ES';
 
@@ -47,4 +55,4 @@ async function getCurrentWeatherByLocationKey (locationKey){
     }
 }
 
-module.exports = { getLocationsByLocationName, getCurrentWeatherByLocationKey };
+module.exports = { config, getLocationsByLocationName, getCurrentWeatherByLocationKey };
