@@ -4,7 +4,7 @@ const fetch = require('node-fetch');
 const apiKey = 'TzVuWmyxAeJzUJOuixA7LHnGDooYk4lE';
 const apiUrl = 'http://dataservice.accuweather.com';
 
-async function getLocationKeyByLocationName (locationName) {
+async function getLocationsByLocationName (locationName) {
     
     let url = `${apiUrl}/locations/v1/cities/search`;
     //apiKey
@@ -17,14 +17,8 @@ async function getLocationKeyByLocationName (locationName) {
     try{
         let resp = await fetch(url);
         let jsonObject = await resp.json();
-
-        if(jsonObject.length > 1){
-            throw "Se encontró más de 1 ubicación. Por favor, sea más específico.";
-        }else if(jsonObject.length === 0){
-            throw "No se encontró ninguna ubicación. Intente con otra búsqueda."
-        }
     
-        return jsonObject[0].Key;
+        return jsonObject;
     }
     catch(err) {
         console.log(err);
@@ -53,4 +47,4 @@ async function getCurrentWeatherByLocationKey (locationKey){
     }
 }
 
-module.exports = { getLocationKeyByLocationName, getCurrentWeatherByLocationKey };
+module.exports = { getLocationsByLocationName, getCurrentWeatherByLocationKey };
