@@ -1,5 +1,5 @@
 {
-  "name": "accuweather-weather-data-retriever",
+  "name": "accuweather-retriever-example",
   "version": "1.0.0",
   "description": "Provides methods for getting weather data using Accuweather API",
   "main": "index.js",
@@ -16,7 +16,7 @@
   "author": "Ezequiel Etchecoin",
   "license": "ISC",
   "dependencies": {
-    "console-read-write": "^0.1.1",
-    "node-fetch": "^2.6.0"
+    "accuweather-retriever": "^1.0.0",
+    "console-read-write": "^0.1.1"
   }
 }

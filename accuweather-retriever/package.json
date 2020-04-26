@@ -1,0 +1,14 @@
+{
+  "name": "accuweather-retriever",
+  "version": "1.0.0",
+  "description": "Data retriever for AccuWeather API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ezequiel Etchecoin",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^2.6.0"
+  }
+}

@@ -44,11 +44,13 @@ const getCurrentWeatherByLocationKey = async (locationKey) => {
     try{
         let resp = await fetch(url);
         let jsonObject = await resp.json();
+
+        if(!jsonObject.length){
+            throw 'Location key not found.'
+        }
     
-        return {
-            'weather': jsonObject[0].WeatherText, 
-            'temperatureInCentigrades': jsonObject[0].Temperature.Metric.Value 
-        };
+        //We take the first result (the locationKey is supposed to be unique)
+        return jsonObject[0];
     }
     catch(err) {
         console.log(err);
